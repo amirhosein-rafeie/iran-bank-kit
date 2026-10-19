@@ -1,0 +1,1039 @@
+{
+  "checkedAt": "2026-10-19",
+  "sources": {
+    "cbi-registry": {
+      "url": "https://www.cbi.ir/BanksInstitutions/BankInstitute.aspx",
+      "kind": "regulator",
+      "checkedAt": "2026-10-19",
+      "scope": "Three result pages and the bank selector; selector values are institution IDs, not explicit IBAN documentation."
+    },
+    "tejarat-card": {
+      "url": "https://www.tejaratbank.ir/web_directory/1495-Business-Cards.html",
+      "kind": "issuer",
+      "checkedAt": "2026-10-19",
+      "scope": "Explicit attribution of card prefix 585983 to Tejarat."
+    },
+    "vandar-banks": {
+      "url": "https://vandarpay.github.io/docs/banks/",
+      "kind": "payment_provider",
+      "checkedAt": "2026-10-19",
+      "publishedDate": "1399/11/10",
+      "scope": "Historical IBAN bank-code table; not evidence of current licensing or account activity."
+    }
+  },
+  "registrySnapshot": [
+    {
+      "id": "055",
+      "name": "بانک اقتصادنوین"
+    },
+    {
+      "id": "069",
+      "name": "بانک ایران زمین"
+    },
+    {
+      "id": "054",
+      "name": "بانک پارسیان"
+    },
+    {
+      "id": "057",
+      "name": "بانک پاسارگاد"
+    },
+    {
+      "id": "018",
+      "name": "بانک تجارت"
+    },
+    {
+      "id": "097",
+      "name": "بانک تجارتی ایران و اروپا"
+    },
+    {
+      "id": "022",
+      "name": "بانک توسعه تعاون"
+    },
+    {
+      "id": "020",
+      "name": "بانک توسعه صادرات ایران"
+    },
+    {
+      "id": "078",
+      "name": "بانک خاورمیانه"
+    },
+    {
+      "id": "066",
+      "name": "بانک دی"
+    },
+    {
+      "id": "013",
+      "name": "بانک رفاه کارگران"
+    },
+    {
+      "id": "056",
+      "name": "بانک سامان"
+    },
+    {
+      "id": "015",
+      "name": "بانک سپه"
+    },
+    {
+      "id": "058",
+      "name": "بانک سرمایه"
+    },
+    {
+      "id": "059",
+      "name": "بانک سینا"
+    },
+    {
+      "id": "061",
+      "name": "بانک شهر"
+    },
+    {
+      "id": "019",
+      "name": "بانک صادرات ایران"
+    },
+    {
+      "id": "011",
+      "name": "بانک صنعت و معدن"
+    },
+    {
+      "id": "070",
+      "name": "بانک قرض‌الحسنه رسالت"
+    },
+    {
+      "id": "060",
+      "name": "بانک قرض‌الحسنه مهر ایران"
+    },
+    {
+      "id": "053",
+      "name": "بانک کارآفرین"
+    },
+    {
+      "id": "016",
+      "name": "بانک کشاورزی"
+    },
+    {
+      "id": "064",
+      "name": "بانک گردشگری"
+    },
+    {
+      "id": "010",
+      "name": "بانک مرکزی ج.ا.ا"
+    },
+    {
+      "id": "014",
+      "name": "بانک مسکن"
+    },
+    {
+      "id": "095",
+      "name": "بانک مشترک ایران - ونزوئلا"
+    },
+    {
+      "id": "012",
+      "name": "بانک ملت"
+    },
+    {
+      "id": "017",
+      "name": "بانک ملی ایران"
+    },
+    {
+      "id": "021",
+      "name": "پست بانک ایران"
+    },
+    {
+      "id": "075",
+      "name": "مؤسسه اعتباری غیربانکی ملل"
+    }
+  ],
+  "records": {
+    "mellat": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک ملت",
+        "page": 3,
+        "institutionId": "012"
+      },
+      "iban": {
+        "code": "012",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "610433",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "991975",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "melli": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک ملی ایران",
+        "page": 3,
+        "institutionId": "017"
+      },
+      "iban": {
+        "code": "017",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "603799",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "170019",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "saderat": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک صادرات ایران",
+        "page": 2,
+        "institutionId": "019"
+      },
+      "iban": {
+        "code": "019",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "603769",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "tejarat": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک تجارت",
+        "page": 1,
+        "institutionId": "018"
+      },
+      "iban": {
+        "code": "018",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "627353",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "585983",
+          "status": "issuer_documented",
+          "sources": ["tejarat-card"]
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "sepah": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک سپه",
+        "page": 2,
+        "institutionId": "015"
+      },
+      "iban": {
+        "code": "015",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "589210",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "refah": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک رفاه کارگران",
+        "page": 2,
+        "institutionId": "013"
+      },
+      "iban": {
+        "code": "013",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "589463",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "maskan": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک مسکن",
+        "page": 3,
+        "institutionId": "014"
+      },
+      "iban": {
+        "code": "014",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "628023",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "keshavarzi": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک کشاورزی",
+        "page": 3,
+        "institutionId": "016"
+      },
+      "iban": {
+        "code": "016",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "603770",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "639217",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "post-bank": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "پست بانک ایران",
+        "page": 3,
+        "institutionId": "021"
+      },
+      "iban": {
+        "code": "021",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "627760",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "tosee-taavon": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک توسعه تعاون",
+        "page": 1,
+        "institutionId": "022"
+      },
+      "iban": {
+        "code": "022",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "502908",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "tosee-saderat": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک توسعه صادرات ایران",
+        "page": 1,
+        "institutionId": "020"
+      },
+      "iban": {
+        "code": "020",
+        "status": "pending",
+        "sources": ["cbi-registry"],
+        "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "627648",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "207177",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "sanat-madan": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک صنعت و معدن",
+        "page": 2,
+        "institutionId": "011"
+      },
+      "iban": {
+        "code": "011",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "627961",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "eghtesad-novin": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک اقتصادنوین",
+        "page": 1,
+        "institutionId": "055"
+      },
+      "iban": {
+        "code": "055",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "627412",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "parsian": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک پارسیان",
+        "page": 1,
+        "institutionId": "054"
+      },
+      "iban": {
+        "code": "054",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "622106",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "627884",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "639194",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "pasargad": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک پاسارگاد",
+        "page": 1,
+        "institutionId": "057"
+      },
+      "iban": {
+        "code": "057",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "502229",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "639347",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "saman": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک سامان",
+        "page": 2,
+        "institutionId": "056"
+      },
+      "iban": {
+        "code": "056",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "621986",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "sina": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک سینا",
+        "page": 2,
+        "institutionId": "059"
+      },
+      "iban": {
+        "code": "059",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "639346",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "sarmayeh": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک سرمایه",
+        "page": 2,
+        "institutionId": "058"
+      },
+      "iban": {
+        "code": "058",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "639607",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "shahr": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک شهر",
+        "page": 2,
+        "institutionId": "061"
+      },
+      "iban": {
+        "code": "061",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "502806",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "504706",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "mehr-iran": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک قرض‌الحسنه مهر ایران",
+        "page": 2,
+        "institutionId": "060"
+      },
+      "iban": {
+        "code": "060",
+        "status": "pending",
+        "sources": ["cbi-registry"],
+        "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "606373",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "karafarin": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک کارآفرین",
+        "page": 3,
+        "institutionId": "053"
+      },
+      "iban": {
+        "code": "053",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "627488",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "502910",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "day": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک دی",
+        "page": 1,
+        "institutionId": "066"
+      },
+      "iban": {
+        "code": "066",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "502938",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "iran-zamin": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک ایران زمین",
+        "page": 1,
+        "institutionId": "069"
+      },
+      "iban": {
+        "code": "069",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "505785",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "khavarmianeh": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک خاورمیانه",
+        "page": 1,
+        "institutionId": "078"
+      },
+      "iban": {
+        "code": "078",
+        "status": "pending",
+        "sources": ["cbi-registry"],
+        "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "585947",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "gardeshgari": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک گردشگری",
+        "page": 3,
+        "institutionId": "064"
+      },
+      "iban": {
+        "code": "064",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "505416",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "resalat": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک قرض‌الحسنه رسالت",
+        "page": 2,
+        "institutionId": "070"
+      },
+      "iban": {
+        "code": "070",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "504172",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "ayandeh": {
+      "registry": {
+        "status": "not_listed",
+        "source": "cbi-registry",
+        "note": "Absence from this snapshot is not proof of merger, closure or invalidity of historical identifiers."
+      },
+      "iban": {
+        "code": "062",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "636214",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "ansar": {
+      "registry": {
+        "status": "not_listed",
+        "source": "cbi-registry",
+        "note": "Absence from this snapshot is not proof of merger, closure or invalidity of historical identifiers."
+      },
+      "iban": {
+        "code": "063",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "627381",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "kosar": {
+      "registry": {
+        "status": "not_listed",
+        "source": "cbi-registry",
+        "note": "Absence from this snapshot is not proof of merger, closure or invalidity of historical identifiers."
+      },
+      "iban": {
+        "code": "073",
+        "status": "pending",
+        "sources": ["cbi-registry"],
+        "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "505801",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "melal": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "مؤسسه اعتباری غیربانکی ملل",
+        "page": 3,
+        "institutionId": "075"
+      },
+      "iban": {
+        "code": "075",
+        "status": "pending",
+        "sources": ["cbi-registry"],
+        "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
+      },
+      "cardPrefixes": [
+        {
+          "prefix": "606256",
+          "status": "pending",
+          "sources": [],
+          "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        }
+      ],
+      "logo": {
+        "status": "present_source_pending"
+      }
+    },
+    "central-bank": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک مرکزی ج.ا.ا",
+        "page": 3,
+        "institutionId": "010"
+      },
+      "iban": {
+        "code": "010",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [],
+      "logo": {
+        "status": "missing"
+      }
+    },
+    "iran-venezuela": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک مشترک ایران - ونزوئلا",
+        "page": 3,
+        "institutionId": "095"
+      },
+      "iban": {
+        "code": "095",
+        "status": "provider_documented",
+        "sources": ["vandar-banks"],
+        "note": "Published by the payment provider; current operation has not been independently verified."
+      },
+      "cardPrefixes": [],
+      "logo": {
+        "status": "missing"
+      }
+    },
+    "iran-europe": {
+      "registry": {
+        "status": "listed",
+        "source": "cbi-registry",
+        "name": "بانک تجارتی ایران و اروپا",
+        "page": 1,
+        "institutionId": "097"
+      },
+      "iban": {
+        "code": null,
+        "candidateCode": "097",
+        "status": "pending",
+        "sources": ["cbi-registry"],
+        "note": "097 is the CBI institution ID. Its use as an IBAN bank code is unconfirmed and is deliberately not enabled for detection."
+      },
+      "cardPrefixes": [],
+      "logo": {
+        "status": "missing"
+      }
+    }
+  }
+}

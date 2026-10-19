@@ -1,0 +1,81 @@
+{
+  "name": "iran-bank-kit",
+  "version": "0.1.0",
+  "description": "Iranian bank detection, card and Sheba validation, bank logos and React components with TypeScript support.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/core.js",
+  "types": "./dist/core.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./logos": {
+      "types": "./dist/logos.d.ts",
+      "import": "./dist/logos.js"
+    },
+    "./logos/*.png": "./logos/*.png",
+    "./catalog-audit.json": "./catalog-audit.json"
+  },
+  "files": [
+    "dist",
+    "logos",
+    "NOTICE.md",
+    "catalog-audit.json",
+    "CATALOG_AUDIT.md",
+    "UNCERTAINTIES.md"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "prepack": "npm run build && npm test"
+  },
+  "keywords": [
+    "iran",
+    "iranian",
+    "bank",
+    "card",
+    "sheba",
+    "iban",
+    "luhn",
+    "bank-logo",
+    "react",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=20.9"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirhosein-rafeie/iran-bank-kit.git"
+  },
+  "homepage": "https://github.com/amirhosein-rafeie/iran-bank-kit#readme",
+  "bugs": {
+    "url": "https://github.com/amirhosein-rafeie/iran-bank-kit/issues"
+  }
+}
