@@ -1,14 +1,11 @@
 # iran-bank-kit
 
-Iranian bank detection, card and Sheba validation, PNG logos and React components.
+Iranian bank detection, card and Sheba validation, formatting, masking, SVG logos and React components.
 TypeScript types are included. Core utilities have no runtime dependencies;
 React is only required when importing `iran-bank-kit/react`.
 
 See [NOTICE.md](NOTICE.md) for catalog coverage, evidence confidence and
 third-party logo information. Code is licensed under [MIT](LICENSE).
-
-See [UNCERTAINTIES.md](UNCERTAINTIES.md) for the complete list of unresolved
-data, asset, compatibility and release questions.
 
 ## Interactive demo
 
@@ -72,6 +69,57 @@ bank's `ibanCode` and `cardPrefixes` describe the current bank, not necessarily
 the input's original issuer. Input numbers are never rewritten; resolving a bank
 does not convert a Sheba number or establish that the account is active.
 
+## Formatting and masking
+
+```ts
+import { formatCardNumber, formatIban, maskCardNumber, maskIban } from "iran-bank-kit";
+
+formatCardNumber("۶۱۰۴-۳۳۰۰-۰۰۰۰-۰۰۱۱"); // '6104 3300 0000 0011'
+formatIban("430120000000000000000001"); // 'IR43 0120 0000 0000 0000 0000 01'
+maskCardNumber("6104330000000011"); // '6104 **** **** 0011'
+maskIban("IR430120000000000000000001"); // 'IR43 **** **** **** **** **00 01'
+```
+
+Formatters accept partial input, normalize Persian/Arabic digits and group every
+four characters. `formatIban` adds `IR` when a numeric body is provided. Empty input
+stays empty. Invalid characters or excessive length return the original input
+unchanged: these functions never silently discard characters or truncate numbers.
+
+Masks require a full, structurally numeric number; malformed or partial input
+returns `undefined`, never the original unmasked value. Card masks reveal the first
+and last four digits. IBAN masks reveal the country/check digits and last four digits.
+Formatting and masking do not validate checksums or establish account validity.
+
+## Detailed validation
+
+```ts
+import { validateIranianCardNumber, validateIranianIban } from "iran-bank-kit";
+
+validateIranianCardNumber("6104330000000011"); // { valid: true }
+validateIranianCardNumber("6104330000000012");
+// { valid: false, error: 'invalid_checksum' }
+validateIranianIban("DE430120000000000000000001");
+// { valid: false, error: 'invalid_country' }
+```
+
+Both return the `BankNumberValidationResult` union: `{ valid: true }` or
+`{ valid: false, error: BankNumberValidationError }`. They report the first error:
+
+| Error | Meaning |
+| --- | --- |
+| `empty` | No input after normalization |
+| `invalid_country` | A two-letter country prefix other than `IR` (IBAN only) |
+| `invalid_characters` | Characters other than digits after removing optional `IR` |
+| `invalid_length` | Not 16 card digits or 24 numeric IBAN digits |
+| `repeated_digits` | All card digits are identical |
+| `zero_account` | The IBAN account/bank portion is entirely zero |
+| `invalid_check_digits` | IBAN check digits are outside 02–98 |
+| `invalid_checksum` | Luhn or MOD-97 check failed |
+
+The boolean `isValidIranianCardNumber` and `isValidIranianIban` APIs retain their
+existing behavior and use these same validators. Unknown issuers can still have
+structurally valid numbers; validation is independent of bank detection.
+
 ## Catalog coverage
 
 There are 33 entries: all 30 names in the CBI registry snapshot retrieved on
@@ -85,7 +133,7 @@ lists and no logo assets. No unknown card prefixes or brand colors were invented
 The optional `color` field is retained where already supplied. `ibanCode` is
 optional: Iran–Europe has no confirmed IBAN mapping, so detection does not treat
 CBI institution ID 097 as a confirmed bank code. See
-[CATALOG_AUDIT.md](CATALOG_AUDIT.md) for source scope and remaining verification.
+[NOTICE.md](NOTICE.md) for source scope and remaining verification.
 
 ## React
 
@@ -109,13 +157,19 @@ the surrounding font; they require neither Next.js, Tailwind nor a design system
 
 ```ts
 import { getBankLogo } from "iran-bank-kit/logos";
-const src = bank && getBankLogo(bank); // PNG data URI, or undefined if missing
+const src = bank && getBankLogo(bank); // SVG data URI, or undefined if missing
 ```
 
-The logos/React entrypoints bundle the PNG data for portable rendering, including
-SSR. This increases their size; core imports do not load logos or React. A strict
-CSP must allow `data:` in `img-src`. Original assets are also exported as
-`iran-bank-kit/logos/mellat.png` for applications that manage image bundling.
+`getBankLogo`, `BankLogo`, `BankIdentity` and the demo share the same 30 SVG logos,
+including Pasargad. Central Bank, Iran–Venezuela and Iran–Europe have
+no logo; no placeholder is fabricated. The former duplicate PNGs are removed.
+
+The logos/React entrypoints bundle image data for portable rendering, including
+SSR. Core imports do not load logos or React. A strict CSP must allow `data:` in
+`img-src`. For asset bundlers, individual files are exported as
+`iran-bank-kit/logos/mellat.svg` and `iran-bank-kit/logos/pasargad.svg`.
+PNG paths and the separate `iran-bank-kit/svg` entrypoint are not provided.
+Asset sources and licenses are recorded in [logos/SOURCES.md](logos/SOURCES.md).
 
 ## Develop and test
 
@@ -148,7 +202,6 @@ npm publish --access public
 The prepack script builds the package and runs its tests. No files from another
 application are needed to build or publish this project. The source repository is
 [GitHub](https://github.com/amirhosein-rafeie/iran-bank-kit); report problems through
-[issues](https://github.com/amirhosein-rafeie/iran-bank-kit/issues). Author metadata
-can be added when supplied.
+[issues](https://github.com/amirhosein-rafeie/iran-bank-kit/issues).
 
 The package targets ESM and React 18/19. CommonJS is not provided.

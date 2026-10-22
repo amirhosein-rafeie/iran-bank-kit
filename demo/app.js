@@ -1,4 +1,4 @@
-import { IRANIAN_BANKS, normalizeBankNumber, detectBankByCardNumber, detectBankByIban, isValidIranianCardNumber, isValidIranianIban } from './lib/core.js';
+import { IRANIAN_BANKS, normalizeBankNumber, detectBankByCardNumber, detectBankByIban, validateIranianCardNumber, validateIranianIban, formatCardNumber, formatIban, maskCardNumber, maskIban } from './lib/core.js';
 import { getBankLogo } from './lib/logos.js';
 
 const $ = id => document.getElementById(id);
@@ -25,13 +25,26 @@ function updateResult() {
   const normalized = normalizeBankNumber(raw);
   const body = normalized.replace(/^IR/i, '');
   const bank = mode === 'card' ? detectBankByCardNumber(raw) : detectBankByIban(raw);
-  const valid = mode === 'card' ? isValidIranianCardNumber(raw) : isValidIranianIban(raw);
+  const validation = mode === 'card' ? validateIranianCardNumber(raw) : validateIranianIban(raw);
+  const valid = validation.valid;
+  const errors = {
+    empty: 'هنوز وارد نشده',
+    invalid_characters: 'شماره کاراکتر غیرمجاز دارد',
+    invalid_length: mode === 'card' ? 'کارت باید ۱۶ رقم داشته باشد' : 'شبا باید ۲۴ رقم پس از IR داشته باشد',
+    invalid_country: 'کد کشور باید IR باشد',
+    repeated_digits: 'تمام رقم‌های کارت یکسان‌اند',
+    zero_account: 'بخش حساب شبا نباید سراسر صفر باشد',
+    invalid_check_digits: 'دو رقم کنترلی شبا باید بین ۰۲ و ۹۸ باشند',
+    invalid_checksum: 'رقم کنترلی نامعتبر است',
+  };
   const partial = mode === 'card' ? /^\d{1,15}$/.test(normalized) : /^(?:IR)?\d{0,23}$/i.test(normalized);
   $('result-name').textContent = bank?.name ?? (normalized ? 'بانک شناسایی نشد' : 'منتظر شمارهٔ شما');
   $('result-key').textContent = bank?.key ?? '—';
   $('result-logo').replaceChildren(logo(bank, ''));
   $('normalized').textContent = normalized || '—';
-  $('validity').textContent = !normalized ? 'هنوز وارد نشده' : valid ? 'رقم کنترلی معتبر' : partial ? 'شماره هنوز کامل نیست' : 'ساختار یا رقم کنترلی نامعتبر';
+  $('formatted').textContent = (mode === 'card' ? formatCardNumber(raw) : formatIban(raw)) || '—';
+  $('masked').textContent = (mode === 'card' ? maskCardNumber(raw) : maskIban(raw)) ?? '—';
+  $('validity').textContent = valid ? 'رقم کنترلی معتبر' : errors[validation.error];
   $('validity').className = `status ${!normalized || partial ? 'neutral' : valid ? 'valid' : 'invalid'}`;
   const historical = IRANIAN_BANKS.find(item => item.successorKey && (mode === 'card' ? item.cardPrefixes.includes(normalized.slice(0, 6)) : item.ibanCode === body.slice(2, 5)));
   $('result-note').textContent = bank && historical

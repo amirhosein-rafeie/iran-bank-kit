@@ -13,7 +13,7 @@ test("React renders bundled logos during SSR without Next.js or browser globals"
       className: "bank-identity",
     }),
   );
-  assert.ok(markup.includes("data:image/png;base64,"));
+  assert.ok(markup.includes("data:image/svg+xml;base64,"));
   assert.ok(markup.includes('alt="بانک ملت"'));
   assert.ok(markup.includes('width="32"'));
   assert.ok(markup.includes('class="bank-identity"'));

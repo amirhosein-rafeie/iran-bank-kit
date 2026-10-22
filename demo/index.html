@@ -52,7 +52,7 @@
     <section class="intro" aria-labelledby="intro-title">
       <h1 id="intro-title">تشخیص و اعتبارسنجی بانک‌های ایرانی</h1>
       <p>کتابخانهٔ <bdi>iran-bank-kit</bdi> برای تشخیص بانک از شماره کارت و شبا، بررسی رقم کنترلی و نمایش لوگو در جاوااسکریپت و ری‌اکت.</p>
-      <p class="coverage"><strong>فهرست به‌روزشدهٔ ۳۳ بانک و مؤسسهٔ ایرانی</strong>؛ شامل بانک مرکزی، ایران–ونزوئلا و ایران‌اروپا، همراه با نگاشت شناسه‌های بانک‌های ادغام‌شده به بانک جانشین. <a href="https://github.com/amirhosein-rafeie/iran-bank-kit/blob/main/CATALOG_AUDIT.md">جزئیات پوشش و منابع ↗</a></p>
+      <p class="coverage"><strong>فهرست به‌روزشدهٔ ۳۳ بانک و مؤسسهٔ ایرانی</strong>؛ شامل بانک مرکزی، ایران–ونزوئلا و ایران‌اروپا، همراه با نگاشت شناسه‌های بانک‌های ادغام‌شده به بانک جانشین. <a href="https://github.com/amirhosein-rafeie/iran-bank-kit/blob/main/NOTICE.md">جزئیات پوشش و منابع ↗</a></p>
       <p class="project-meta"><span>آخرین به‌روزرسانی: <time datetime="2026-10-22"><bdi>۲۰۲۶/۱۰/۲۲</bdi></time></span><span dir="ltr">JavaScript / TypeScript</span><span>هسته بدون وابستگی</span><span>مجوز کد: MIT</span></p>
     </section>
     <section id="usage" class="section" aria-labelledby="usage-title">
@@ -67,11 +67,16 @@
           <div class="code-heading"><span dir="ltr">JavaScript / TypeScript</span><button id="copy-code" type="button">کپی کد</button></div>
           <pre dir="ltr"><code id="usage-code">import {
   detectBankByCardNumber,
-  isValidIranianCardNumber,
+  formatCardNumber,
+  maskCardNumber,
+  validateIranianCardNumber,
 } from 'iran-bank-kit';
 
 detectBankByCardNumber('610433')?.key; // 'mellat'
-isValidIranianCardNumber('6104330000000011'); // true</code></pre>
+formatCardNumber('6104330000000011'); // '6104 3300 0000 0011'
+maskCardNumber('6104330000000011'); // '6104 **** **** 0011'
+validateIranianCardNumber('6104330000000012');
+// { valid: false, error: 'invalid_checksum' }</code></pre>
         </div>
       </div>
     </section>
@@ -89,7 +94,12 @@ isValidIranianCardNumber('6104330000000011'); // true</code></pre>
         <div class="result-panel" aria-live="polite" aria-atomic="true">
           <p class="result-top">خروجی کتابخانه</p>
           <div id="bank-identity" class="bank-identity"><div id="result-logo" class="result-logo"></div><div><h3 id="result-name">منتظر شمارهٔ شما</h3><code id="result-key" dir="ltr">—</code></div></div>
-          <dl class="result-details"><div class="result-row"><dt>اعتبار شماره</dt><dd><strong id="validity" class="status neutral">هنوز وارد نشده</strong></dd></div><div class="result-row"><dt>ورودی استاندارد</dt><dd><code id="normalized" dir="ltr">—</code></dd></div></dl>
+          <dl class="result-details">
+            <div class="result-row"><dt>اعتبار شماره</dt><dd><strong id="validity" class="status neutral">هنوز وارد نشده</strong></dd></div>
+            <div class="result-row"><dt>ورودی استاندارد</dt><dd><code id="normalized" dir="ltr">—</code></dd></div>
+            <div class="result-row"><dt>قالب‌بندی</dt><dd><code id="formatted" dir="ltr">—</code></dd></div>
+            <div class="result-row"><dt>نمایش ماسک‌شده</dt><dd><code id="masked" dir="ltr">—</code></dd></div>
+          </dl>
           <p id="result-note" class="result-note">تشخیص بانک با پیش‌شماره انجام می‌شود و مستقل از اعتبار شماره است.</p>
         </div>
       </div>

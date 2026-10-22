@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { test } from "node:test";
 import {
   IRANIAN_BANKS,
@@ -9,8 +9,90 @@ import {
   isValidIranianCardNumber,
   isValidIranianIban,
   normalizeBankNumber,
+  formatCardNumber,
+  formatIban,
+  maskCardNumber,
+  maskIban,
+  validateIranianCardNumber,
+  validateIranianIban,
 } from "../dist/core.js";
 import { getBankLogo } from "../dist/logos.js";
+
+test("formatters support typing and preserve invalid input without truncation", () => {
+  assert.equal(formatCardNumber("۶۱۰۴-۳۳۰۰-۰۰۰۰-۰۰۱۱"), "6104 3300 0000 0011");
+  assert.equal(formatCardNumber("61043"), "6104 3");
+  assert.equal(formatIban("ir۴۳ ۰۱۲۰ ۰۰۰۰ ۰۰۰۰ ۰۰۰۰ ۰۰۰۰ ۰۱"), "IR43 0120 0000 0000 0000 0000 01");
+  assert.equal(formatIban("43012"), "IR43 012");
+  assert.equal(formatIban("ir"), "IR");
+  assert.equal(formatIban(""), "");
+  assert.equal(formatCardNumber(""), "");
+  for (const value of ["610433x000000011", "61043300000000111", "1/2", "1.2"]) {
+    assert.equal(formatCardNumber(value), value);
+  }
+  for (const value of ["DE430120000000000000000001", "IR4301200000000000000000010", "IR43!012"]) {
+    assert.equal(formatIban(value), value);
+  }
+  for (let length = 0; length <= 16; length++) {
+    const input = "6104330000000011".slice(0, length);
+    assert.equal(normalizeBankNumber(formatCardNumber(input)), input);
+    assert.equal(formatCardNumber(formatCardNumber(input)), formatCardNumber(input));
+  }
+  for (let length = 1; length <= 24; length++) {
+    const input = "430120000000000000000001".slice(0, length);
+    assert.equal(normalizeBankNumber(formatIban(input)), "IR" + input);
+    assert.equal(formatIban(formatIban(input)), formatIban(input));
+  }
+});
+
+test("masks hide middle digits and never return malformed input unmasked", () => {
+  assert.equal(maskCardNumber("۶۱۰۴-۳۳۰۰-۰۰۰۰-۰۰۱۱"), "6104 **** **** 0011");
+  const masked = maskIban("IR۴۳۰۱۲۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۱");
+  assert.equal(masked, "IR43 **** **** **** **** **00 01");
+  assert.equal(maskIban("430120000000000000000001"), masked);
+  assert.equal(masked.replace(/\D/g, ""), "430001");
+  for (const value of ["", "610433", "61043300000000111", "61043300000000x1"]) {
+    assert.equal(maskCardNumber(value), undefined);
+  }
+  for (const value of ["", "IR43012", "DE430120000000000000000001", "IR43012000000000000000000x"]) {
+    assert.equal(maskIban(value), undefined);
+  }
+});
+
+test("detailed validation distinguishes input and checksum errors", () => {
+  for (const [input, error] of [
+    [" - ", "empty"], ["610433x000000011", "invalid_characters"],
+    ["610433", "invalid_length"], ["8888888888888888", "repeated_digits"],
+    ["6104330000000012", "invalid_checksum"],
+  ]) {
+    assert.deepEqual(validateIranianCardNumber(input), { valid: false, error });
+    assert.equal(isValidIranianCardNumber(input), false);
+  }
+  for (const [input, error] of [
+    ["", "empty"], ["DE430120000000000000000001", "invalid_country"],
+    ["IR43x120000000000000000001", "invalid_characters"], ["IR", "invalid_length"],
+    ["IR43012", "invalid_length"], ["IR000000000000000000000000", "zero_account"],
+    ["IR990120000000000000000001", "invalid_check_digits"],
+    ["IR440120000000000000000001", "invalid_checksum"],
+  ]) {
+    assert.deepEqual(validateIranianIban(input), { valid: false, error });
+    assert.equal(isValidIranianIban(input), false);
+  }
+  assert.deepEqual(validateIranianCardNumber("6104330000000011"), { valid: true });
+  assert.deepEqual(validateIranianIban("IR430120000000000000000001"), { valid: true });
+});
+
+test("raw logo exports provide SVGs including Pasargad without duplicate PNGs", () => {
+  assert.deepEqual(
+    readFileSync(new URL(import.meta.resolve("iran-bank-kit/logos/mellat.svg"))),
+    readFileSync(new URL("../logos/mellat.svg", import.meta.url)),
+  );
+  assert.deepEqual(
+    readFileSync(new URL(import.meta.resolve("iran-bank-kit/logos/pasargad.svg"))),
+    readFileSync(new URL("../logos/pasargad.svg", import.meta.url)),
+  );
+  assert.deepEqual(readdirSync(new URL("../logos/", import.meta.url)).filter(name => name.endsWith(".png")), []);
+  assert.throws(() => import.meta.resolve("iran-bank-kit/logos/mellat.png"), { code: "ERR_PACKAGE_PATH_NOT_EXPORTED" });
+});
 
 test("normalizes presentation without discarding invalid characters", () => {
   assert.equal(normalizeBankNumber("۶۱۰۴-٣٣ ۰۰"), "61043300");
@@ -154,7 +236,7 @@ test("catalog keys, IBAN codes and card prefixes are unique", () => {
   }
 });
 
-test("every catalog logo is a PNG matching its original bytes", () => {
+test("all available logos are SVGs matching their sourced artwork", () => {
   for (const bank of IRANIAN_BANKS) {
     const uri = getBankLogo(bank);
     if (["central-bank", "iran-venezuela", "iran-europe"].includes(bank.key)) {
@@ -165,25 +247,15 @@ test("every catalog logo is a PNG matching its original bytes", () => {
       );
       continue;
     }
-    assert.ok(uri.startsWith("data:image/png;base64,"));
     const bytes = Buffer.from(uri.split(",")[1], "base64");
-    assert.equal(bytes.subarray(1, 4).toString(), "PNG");
-    if (bank.key !== "pasargad") {
-      assert.equal(bytes.readUInt32BE(16), 512, bank.key);
-      assert.equal(bytes.readUInt32BE(20), 512, bank.key);
-      assert.equal(bytes[25], 6, "Updated logos retain RGBA transparency");
-      assert.match(
-        readFileSync(new URL(`../logos/source/${bank.key}.svg`, import.meta.url), "utf8"),
-        /<svg\b/,
-      );
-    }
-    assert.deepEqual(
-      bytes,
-      readFileSync(new URL(`../logos/${bank.key}.png`, import.meta.url)),
-    );
+    assert.ok(uri.startsWith("data:image/svg+xml;base64,"), bank.key);
+    assert.match(bytes.toString(), /<svg\b/);
+    assert.doesNotMatch(bytes.toString(), /<(?:script|image|foreignObject)\b/);
+    assert.deepEqual(bytes, readFileSync(new URL(`../logos/${bank.key}.svg`, import.meta.url)));
   }
   assert.equal(getBankLogo({ key: "unknown" }), undefined);
   assert.equal(getBankLogo({ key: "toString" }), undefined);
+  assert.equal(getBankLogo({ key: "__proto__" }), undefined);
 });
 
 test("audit covers every record, source and registry entry without overstating verification", () => {

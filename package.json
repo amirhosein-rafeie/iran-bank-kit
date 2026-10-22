@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Iranian bank detection, card and Sheba validation, bank logos and React components with TypeScript support.",
   "license": "MIT",
+  "author": {
+    "name": "امیرحسین رافعی",
+    "url": "https://github.com/amirhosein-rafeie"
+  },
   "type": "module",
   "sideEffects": false,
   "main": "./dist/core.js",
@@ -20,16 +24,14 @@
       "types": "./dist/logos.d.ts",
       "import": "./dist/logos.js"
     },
-    "./logos/*.png": "./logos/*.png",
+    "./logos/*.svg": "./logos/*.svg",
     "./catalog-audit.json": "./catalog-audit.json"
   },
   "files": [
     "dist",
     "logos",
     "NOTICE.md",
-    "catalog-audit.json",
-    "CATALOG_AUDIT.md",
-    "UNCERTAINTIES.md"
+    "catalog-audit.json"
   ],
   "scripts": {
     "build": "node build.mjs",

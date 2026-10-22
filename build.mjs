@@ -1,8 +1,8 @@
 import {
   copyFileSync,
+  existsSync,
   mkdirSync,
   readFileSync,
-  readdirSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
@@ -31,11 +31,12 @@ if (diagnostics.length) {
 }
 if (program.emit().emitSkipped) throw new Error("TypeScript emit failed");
 const logos = {};
-for (const filename of readdirSync(join(directory, "logos")).sort()) {
-  if (!filename.endsWith(".png")) continue;
-  logos[filename.slice(0, -4)] =
-    "data:image/png;base64," +
-    readFileSync(join(directory, "logos", filename)).toString("base64");
+const { IRANIAN_BANKS } = await import("./dist/banks.js");
+for (const bank of IRANIAN_BANKS) {
+  const path = join(directory, "logos", `${bank.key}.svg`);
+  if (!existsSync(path)) continue;
+  logos[bank.key] = "data:image/svg+xml;base64," +
+    readFileSync(path).toString("base64");
 }
 mkdirSync(join(directory, "dist"), { recursive: true });
 writeFileSync(

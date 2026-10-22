@@ -662,7 +662,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "saman": {
