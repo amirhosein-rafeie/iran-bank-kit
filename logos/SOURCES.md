@@ -1,8 +1,8 @@
-# Updated logo sources — 2026-10-22
+# Logo sources
 
 Thirty SVG logos are used directly by the library, React components and
-demo. All PNG renders have been removed, including Pasargad's inherited image.
-Bank identifiers are unchanged. `getBankLogo` returns the appropriate data URI.
+demo. `getBankLogo` returns the appropriate SVG data URI.
+Sources were reviewed on 2026-10-22.
 
 | Asset | Vector source | License information |
 | --- | --- | --- |
@@ -50,10 +50,8 @@ from the linked full wordmark, with square viewBox
 `185 -5 80 80`. The derived SVG emblem retains attribution to the original;
 see [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
-All 30 existing logos were visually compared with candidate vector artwork.
-Pasargad now uses the documented vector and its original yellow color rather
-than the inherited gold PNG. No logo was added for the three
-institutions that previously had no asset.
+Pasargad uses the documented vector and its original yellow color.
+Central Bank, Iran–Venezuela and Iran–Europe have no bundled logo.
 
 This is a source and rendering review, not issuer confirmation of current brand
 guidelines. Direct checks of Sepah, Karafarin and Pasargad websites were

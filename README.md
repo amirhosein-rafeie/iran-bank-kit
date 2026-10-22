@@ -7,22 +7,14 @@ React is only required when importing `iran-bank-kit/react`.
 See [NOTICE.md](NOTICE.md) for catalog coverage, evidence confidence and
 third-party logo information. Code is licensed under [MIT](LICENSE).
 
-## Interactive demo
+## Installation
 
-Run `npm ci` followed by `npm run demo`, then open http://127.0.0.1:4173.
-The Persian RTL demo includes card/Sheba validation, live bank detection and a
-searchable logo gallery. All input is processed locally in the browser.
-`npm run demo:test` builds and checks the preview; `npm run demo:build` writes a
-static website to `demo-dist/`, suitable for GitHub Pages. No server is needed
-after deployment. Demo files are excluded from the npm package.
+```sh
+npm install iran-bank-kit
+```
 
-To publish on GitHub Pages, select **Settings → Pages → Source → GitHub Actions**
-and run the **Deploy demo** workflow. It deploys only `demo-dist/`.
-The build includes a static bank catalog, search metadata, structured source-code
-data and `sitemap.xml`. The canonical URL targets
-`https://amirhosein-rafeie.github.io/iran-bank-kit/`; update the canonical,
-Open Graph URL and structured-data URL in `demo/index.html` if hosting changes.
-After deployment, submit the sitemap in Google Search Console to monitor indexing.
+Requires Node.js 20.9+ and supports ESM. React components support React 18/19.
+CommonJS is not provided.
 
 ## Core
 
@@ -162,7 +154,7 @@ const src = bank && getBankLogo(bank); // SVG data URI, or undefined if missing
 
 `getBankLogo`, `BankLogo`, `BankIdentity` and the demo share the same 30 SVG logos,
 including Pasargad. Central Bank, Iran–Venezuela and Iran–Europe have
-no logo; no placeholder is fabricated. The former duplicate PNGs are removed.
+no bundled logo.
 
 The logos/React entrypoints bundle image data for portable rendering, including
 SSR. Core imports do not load logos or React. A strict CSP must allow `data:` in
@@ -171,37 +163,7 @@ SSR. Core imports do not load logos or React. A strict CSP must allow `data:` in
 PNG paths and the separate `iran-bank-kit/svg` entrypoint are not provided.
 Asset sources and licenses are recorded in [logos/SOURCES.md](logos/SOURCES.md).
 
-## Develop and test
+## Support
 
-This is an independent package. From this directory, with Node 20.9+:
-
-```sh
-npm install
-npm run build
-npm test
-npm pack
-```
-
-Install the resulting tarball in a consumer to test it locally:
-
-```sh
-npm install /path/to/iran-bank-kit-0.1.0.tgz
-```
-
-## Publish
-
-The package name for npm publication is `iran-bank-kit`. From this project directory:
-
-```sh
-npm ci
-npm pack --dry-run
-npm login --registry=https://registry.npmjs.org
-npm publish --access public
-```
-
-The prepack script builds the package and runs its tests. No files from another
-application are needed to build or publish this project. The source repository is
-[GitHub](https://github.com/amirhosein-rafeie/iran-bank-kit); report problems through
-[issues](https://github.com/amirhosein-rafeie/iran-bank-kit/issues).
-
-The package targets ESM and React 18/19. CommonJS is not provided.
+Report bugs or request features through
+[GitHub issues](https://github.com/amirhosein-rafeie/iran-bank-kit/issues).

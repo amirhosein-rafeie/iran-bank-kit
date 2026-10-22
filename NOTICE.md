@@ -7,24 +7,23 @@ historical identifiers, and mapping confidence are separate concerns.
 
 See [catalog-audit.json](catalog-audit.json)
 for dated evidence, pending verification and source links for every record.
-Tejarat's own website supports prefix 585983; the erroneous Gardeshgari mapping
-has been removed. Other inherited card prefixes remain pending issuer evidence.
+Tejarat's own website supports prefix 585983. Other catalog card prefixes
+remain pending issuer evidence.
 The CBI institution ID 097 is pending direct IBAN evidence and is not enabled as
 an IBAN mapping.
 
-Update 2026-10-22: detection resolves historical Ayandeh identifiers to Melli
+Detection resolves historical Ayandeh identifiers to Melli
 and Ansar/Kosar identifiers to Sepah. Original catalog entries and logo assets
 remain for historical use. Successor evidence is separate from prefix and IBAN
 verification; this resolution does not convert account or Sheba numbers.
 
-Update 2026-10-22: All 30 existing logos were visually reviewed and now use SVGs
-from documented vector sources. All PNGs were removed, including Pasargad's
-inherited image; Pasargad now uses the sourced yellow vector artwork.
+The package includes 30 SVG logos from documented vector sources.
+Pasargad uses the sourced yellow vector artwork.
 Refah uses the documented 2022 redesign; direct verification from the bank was unsuccessful.
 See [logos/SOURCES.md](logos/SOURCES.md) for original files, pinned sources,
 attribution, license information and rendering details.
 
-The three added institutions have no logo asset.
+Central Bank, Iran–Venezuela and Iran–Europe have no logo asset.
 Bank names and logos identify their respective institutions;
 no endorsement or ownership of their trademarks is claimed. The MIT code license
 does not relicense third-party logos or trademarks.

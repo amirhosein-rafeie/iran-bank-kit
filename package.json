@@ -1,6 +1,6 @@
 {
   "name": "iran-bank-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Iranian bank detection, card and Sheba validation, bank logos and React components with TypeScript support.",
   "license": "MIT",
   "author": {
