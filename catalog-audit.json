@@ -13,6 +13,30 @@
       "checkedAt": "2026-10-19",
       "scope": "Explicit attribution of card prefix 585983 to Tejarat."
     },
+    "griphook-card": {
+      "url": "https://github.com/alibaba-aero/griphook/blob/4995968a919ceb11ddbc1369e7135eb8107bbb13/banks.json",
+      "kind": "software_catalog",
+      "checkedAt": "2026-10-22",
+      "scope": "Attributes card prefix 505809 to Middle East Bank; software corroboration, not direct issuer evidence or proof of current operation."
+    },
+    "iran-bank-detector-card": {
+      "url": "https://github.com/4limirzaei/iran-bank-detector/blob/51886a6c21661cdc853b34e5cd9bb997c154bff9/src/data/banksList.json",
+      "kind": "software_catalog",
+      "checkedAt": "2026-10-22",
+      "scope": "Lists both 585947 and 505809 for Middle East Bank; software corroboration, not direct issuer evidence or proof of current operation."
+    },
+    "melli-ayandeh-transfer": {
+      "url": "https://t.me/s/bankmelli_ir/9326",
+      "kind": "issuer",
+      "checkedAt": "2026-10-22",
+      "scope": "Bank Melli announcement of Ayandeh deposit transfer and resolution agency from 1404/08/03; not a numeric IBAN conversion rule."
+    },
+    "sepah-merger": {
+      "url": "https://sobh-eqtesad.ir/همه-چیز-درباره-بانک-های-ادغامی-و-چگونگی/اقتصادی/",
+      "kind": "issuer_statement_republished",
+      "checkedAt": "2026-10-22",
+      "scope": "Republication of Bank Sepah's announcement that the Ansar, Kosar, Ghavamin, Hekmat and Mehr Eghtesad merger project completed on 1399/09/30."
+    },
     "vandar-banks": {
       "url": "https://vandarpay.github.io/docs/banks/",
       "kind": "payment_provider",
@@ -155,7 +179,9 @@
       "iban": {
         "code": "012",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -173,7 +199,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "melli": {
@@ -187,7 +215,9 @@
       "iban": {
         "code": "017",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -205,7 +235,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "saderat": {
@@ -219,7 +251,9 @@
       "iban": {
         "code": "019",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -231,7 +265,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "tejarat": {
@@ -245,7 +281,9 @@
       "iban": {
         "code": "018",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -258,11 +296,15 @@
         {
           "prefix": "585983",
           "status": "issuer_documented",
-          "sources": ["tejarat-card"]
+          "sources": [
+            "tejarat-card"
+          ]
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "sepah": {
@@ -276,7 +318,9 @@
       "iban": {
         "code": "015",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -288,7 +332,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "refah": {
@@ -302,7 +348,9 @@
       "iban": {
         "code": "013",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -314,7 +362,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "maskan": {
@@ -328,7 +378,9 @@
       "iban": {
         "code": "014",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -340,7 +392,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "keshavarzi": {
@@ -354,7 +408,9 @@
       "iban": {
         "code": "016",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -372,7 +428,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "post-bank": {
@@ -386,7 +444,9 @@
       "iban": {
         "code": "021",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -398,7 +458,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "tosee-taavon": {
@@ -412,7 +474,9 @@
       "iban": {
         "code": "022",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -424,7 +488,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "tosee-saderat": {
@@ -438,7 +504,9 @@
       "iban": {
         "code": "020",
         "status": "pending",
-        "sources": ["cbi-registry"],
+        "sources": [
+          "cbi-registry"
+        ],
         "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
       },
       "cardPrefixes": [
@@ -456,7 +524,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "sanat-madan": {
@@ -470,7 +540,9 @@
       "iban": {
         "code": "011",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -482,7 +554,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "eghtesad-novin": {
@@ -496,7 +570,9 @@
       "iban": {
         "code": "055",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -508,7 +584,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "parsian": {
@@ -522,7 +600,9 @@
       "iban": {
         "code": "054",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -546,7 +626,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "pasargad": {
@@ -560,7 +642,9 @@
       "iban": {
         "code": "057",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -592,7 +676,9 @@
       "iban": {
         "code": "056",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -604,7 +690,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "sina": {
@@ -618,7 +706,9 @@
       "iban": {
         "code": "059",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -630,7 +720,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "sarmayeh": {
@@ -644,7 +736,9 @@
       "iban": {
         "code": "058",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -656,7 +750,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "shahr": {
@@ -670,7 +766,9 @@
       "iban": {
         "code": "061",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -688,7 +786,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "mehr-iran": {
@@ -702,7 +802,9 @@
       "iban": {
         "code": "060",
         "status": "pending",
-        "sources": ["cbi-registry"],
+        "sources": [
+          "cbi-registry"
+        ],
         "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
       },
       "cardPrefixes": [
@@ -714,7 +816,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "karafarin": {
@@ -728,7 +832,9 @@
       "iban": {
         "code": "053",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -746,7 +852,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "day": {
@@ -760,7 +868,9 @@
       "iban": {
         "code": "066",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -772,7 +882,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "iran-zamin": {
@@ -786,7 +898,9 @@
       "iban": {
         "code": "069",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -798,7 +912,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "khavarmianeh": {
@@ -812,7 +928,9 @@
       "iban": {
         "code": "078",
         "status": "pending",
-        "sources": ["cbi-registry"],
+        "sources": [
+          "cbi-registry"
+        ],
         "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
       },
       "cardPrefixes": [
@@ -821,10 +939,21 @@
           "status": "pending",
           "sources": [],
           "note": "Inherited mapping retained for compatibility; no issuer source has yet been recorded."
+        },
+        {
+          "prefix": "505809",
+          "status": "pending",
+          "sources": [
+            "griphook-card",
+            "iran-bank-detector-card"
+          ],
+          "note": "Added on 2026-10-22 based on matching software catalogs; direct issuer confirmation is still pending."
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "gardeshgari": {
@@ -838,7 +967,9 @@
       "iban": {
         "code": "064",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -850,7 +981,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "resalat": {
@@ -864,7 +997,9 @@
       "iban": {
         "code": "070",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -876,10 +1011,19 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "ayandeh": {
+      "succession": {
+        "successorKey": "melli",
+        "kind": "deposit_transfer",
+        "sources": [
+          "melli-ayandeh-transfer"
+        ]
+      },
       "registry": {
         "status": "not_listed",
         "source": "cbi-registry",
@@ -888,7 +1032,9 @@
       "iban": {
         "code": "062",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -900,10 +1046,19 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "ansar": {
+      "succession": {
+        "successorKey": "sepah",
+        "kind": "merger",
+        "sources": [
+          "sepah-merger"
+        ]
+      },
       "registry": {
         "status": "not_listed",
         "source": "cbi-registry",
@@ -912,7 +1067,9 @@
       "iban": {
         "code": "063",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [
@@ -924,10 +1081,19 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "kosar": {
+      "succession": {
+        "successorKey": "sepah",
+        "kind": "merger",
+        "sources": [
+          "sepah-merger"
+        ]
+      },
       "registry": {
         "status": "not_listed",
         "source": "cbi-registry",
@@ -936,7 +1102,9 @@
       "iban": {
         "code": "073",
         "status": "pending",
-        "sources": ["cbi-registry"],
+        "sources": [
+          "cbi-registry"
+        ],
         "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
       },
       "cardPrefixes": [
@@ -948,7 +1116,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "melal": {
@@ -962,7 +1132,9 @@
       "iban": {
         "code": "075",
         "status": "pending",
-        "sources": ["cbi-registry"],
+        "sources": [
+          "cbi-registry"
+        ],
         "note": "The code matches a CBI institution ID or was inherited; direct IBAN-code documentation is still required."
       },
       "cardPrefixes": [
@@ -974,7 +1146,9 @@
         }
       ],
       "logo": {
-        "status": "present_source_pending"
+        "status": "present_source_documented",
+        "source": "logos/SOURCES.md",
+        "checkedAt": "2026-10-22"
       }
     },
     "central-bank": {
@@ -988,7 +1162,9 @@
       "iban": {
         "code": "010",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [],
@@ -1007,7 +1183,9 @@
       "iban": {
         "code": "095",
         "status": "provider_documented",
-        "sources": ["vandar-banks"],
+        "sources": [
+          "vandar-banks"
+        ],
         "note": "Published by the payment provider; current operation has not been independently verified."
       },
       "cardPrefixes": [],
@@ -1027,7 +1205,9 @@
         "code": null,
         "candidateCode": "097",
         "status": "pending",
-        "sources": ["cbi-registry"],
+        "sources": [
+          "cbi-registry"
+        ],
         "note": "097 is the CBI institution ID. Its use as an IBAN bank code is unconfirmed and is deliberately not enabled for detection."
       },
       "cardPrefixes": [],

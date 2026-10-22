@@ -33,7 +33,10 @@
   ],
   "scripts": {
     "build": "node build.mjs",
-    "test": "node --test test/*.test.mjs",
+    "demo": "npm run demo:build && node demo/serve.mjs",
+    "demo:build": "npm run build && node demo/build.mjs",
+    "demo:test": "npm run demo:build && node --test test/demo.test.mjs",
+    "test": "node --test test/core.test.mjs test/react.test.mjs",
     "prepack": "npm run build && npm test"
   },
   "keywords": [

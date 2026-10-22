@@ -5,6 +5,8 @@ export type IranianBank = {
   color?: string;
   cardPrefixes: string[];
   ibanCode?: string;
+  /** Current service bank for a historical institution. */
+  successorKey?: string;
 };
 
 export const IRANIAN_BANKS: IranianBank[] = [
@@ -197,7 +199,7 @@ export const IRANIAN_BANKS: IranianBank[] = [
     name: "بانک خاورمیانه",
     initial: "خاو",
     color: "#1F4E79",
-    cardPrefixes: ["585947"],
+    cardPrefixes: ["585947", "505809"],
     ibanCode: "078",
   },
   {
@@ -218,6 +220,7 @@ export const IRANIAN_BANKS: IranianBank[] = [
   },
   {
     key: "ayandeh",
+    successorKey: "melli",
     name: "بانک آینده",
     initial: "آین",
     color: "#5C2D91",
@@ -226,6 +229,7 @@ export const IRANIAN_BANKS: IranianBank[] = [
   },
   {
     key: "ansar",
+    successorKey: "sepah",
     name: "بانک انصار",
     initial: "انص",
     color: "#3A6B8A",
@@ -234,6 +238,7 @@ export const IRANIAN_BANKS: IranianBank[] = [
   },
   {
     key: "kosar",
+    successorKey: "sepah",
     name: "موسسه اعتباری کوثر",
     initial: "کوث",
     color: "#1B5E20",

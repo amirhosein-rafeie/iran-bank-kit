@@ -10,6 +10,23 @@ third-party logo information. Code is licensed under [MIT](LICENSE).
 See [UNCERTAINTIES.md](UNCERTAINTIES.md) for the complete list of unresolved
 data, asset, compatibility and release questions.
 
+## Interactive demo
+
+Run `npm ci` followed by `npm run demo`, then open http://127.0.0.1:4173.
+The Persian RTL demo includes card/Sheba validation, live bank detection and a
+searchable logo gallery. All input is processed locally in the browser.
+`npm run demo:test` builds and checks the preview; `npm run demo:build` writes a
+static website to `demo-dist/`, suitable for GitHub Pages. No server is needed
+after deployment. Demo files are excluded from the npm package.
+
+To publish on GitHub Pages, select **Settings → Pages → Source → GitHub Actions**
+and run the **Deploy demo** workflow. It deploys only `demo-dist/`.
+The build includes a static bank catalog, search metadata, structured source-code
+data and `sitemap.xml`. The canonical URL targets
+`https://amirhosein-rafeie.github.io/iran-bank-kit/`; update the canonical,
+Open Graph URL and structured-data URL in `demo/index.html` if hosting changes.
+After deployment, submit the sitemap in Google Search Console to monitor indexing.
+
 ## Core
 
 ```ts
@@ -37,6 +54,23 @@ Arabic digits, whitespace and hyphens are supported. Other nonnumeric characters
 are rejected. Sheba accepts the full `IR` form or its 24-digit numeric body.
 `detectBank({ cardNumber, ibanNumber })` prefers a recognized card over the IBAN.
 `IRANIAN_BANKS` and the `IranianBank` type are also exported.
+
+Detection returns the current service bank for historical identifiers:
+Ayandeh card prefix `636214` and Sheba code `062` return Melli; Ansar `627381` /
+`063` and Kosar `505801` / `073` return Sepah. `BankIdentity` therefore renders
+the current bank's name and logo. Melal remains a separate institution.
+
+Historical entries stay in `IRANIAN_BANKS` with an optional `successorKey`
+(`ayandeh` → `melli`, `ansar` / `kosar` → `sepah`). To exclude these entries from
+a bank picker, use `IRANIAN_BANKS.filter(bank => !bank.successorKey)`.
+This only excludes the documented predecessors; it does not certify that every
+remaining institution is operational. Original logo assets remain available
+when explicitly selecting a historical record.
+
+This changes the detection result for those historical identifiers. The returned
+bank's `ibanCode` and `cardPrefixes` describe the current bank, not necessarily
+the input's original issuer. Input numbers are never rewritten; resolving a bank
+does not convert a Sheba number or establish that the account is active.
 
 ## Catalog coverage
 

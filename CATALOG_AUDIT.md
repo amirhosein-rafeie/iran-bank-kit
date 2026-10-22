@@ -8,14 +8,22 @@ Listed does not mean that every historical card prefix remains operational.
 
 ## Changes
 
+- Update 2026-10-22: added Middle East Bank card prefix 505809 alongside 585947.
+  The pinned Griphook and iran-bank-detector catalogs corroborate the mapping;
+  issuer verification remains pending. Their URLs and review dates are recorded
+  in catalog-audit.json. The original CBI registry snapshot was not rechecked.
 - Removed 585983 from Gardeshgari. Tejarat's own card page explicitly identifies
   this prefix; it now detects Tejarat instead of returning an ambiguous result.
 - Added Central Bank (010), Iran–Venezuela (095), and the Iran–Europe institution.
   No card prefixes, brand colors or logo assets were invented for these entries.
 - 010 and 095 also occur in Vandar's historical IBAN table. CBI institution ID
   097 is not enabled as an IBAN mapping without direct IBAN-code evidence.
-- Ayandeh, Ansar and Kosar were retained for historical identifier compatibility,
-  with not_listed status. No merger or current-license status was inferred.
+- Ayandeh, Ansar and Kosar remain as historical records with not_listed status
+  in the original registry snapshot. Update 2026-10-22: documented succession
+  resolves Ayandeh detection to Melli and Ansar/Kosar detection to Sepah, for
+  both card and IBAN identifiers. Sources and the distinction between deposit
+  transfer and merger are recorded separately in catalog-audit.json. Melal has
+  no successor mapping. Historical identifiers and original logos are retained.
 
 ## Evidence and review status
 
@@ -76,5 +84,7 @@ table also remain pending, as does the candidate 097.
 Obtain issuer evidence for pending prefixes and direct IBAN evidence for pending
 codes. Obtain dated regulator/issuer notices before labeling institutions merged
 or closed. Add sourced, redistributable logos for the three new entries; the
-existing logo source/license audit is still pending. Detection preserves pending
+source/license audit for Pasargad's inherited PNG is still pending.
+The other 29 existing logos now have documented vector sources;
+see [logos/SOURCES.md](logos/SOURCES.md). Detection preserves pending
 mappings for compatibility and is not an authoritative account verification API.

@@ -11,7 +11,13 @@ export function normalizeBankNumber(value: string): string {
     .replace(/[\s-]/g, "");
 }
 
-/** Prefix detection works while typing; it does not validate a card. */
+function resolveCurrentBank(bank?: IranianBank): IranianBank | undefined {
+  return bank?.successorKey
+    ? IRANIAN_BANKS.find((candidate) => candidate.key === bank.successorKey)
+    : bank;
+}
+
+/** Detects the current service bank while typing; does not validate a card. */
 export function detectBankByCardNumber(
   value?: string | null,
 ): IranianBank | undefined {
@@ -22,17 +28,19 @@ export function detectBankByCardNumber(
     bank.cardPrefixes.includes(number.slice(0, 6)),
   );
   // Conflicting inherited prefixes must not silently select the wrong bank.
-  return matches.length === 1 ? matches[0] : undefined;
+  return matches.length === 1 ? resolveCurrentBank(matches[0]) : undefined;
 }
 
-/** Accepts IR-prefixed Sheba or its numeric body, including partial input. */
+/** Detects the current service bank from full or partial Sheba; no conversion. */
 export function detectBankByIban(
   value?: string | null,
 ): IranianBank | undefined {
   if (!value) return undefined;
   const number = normalizeBankNumber(value).replace(/^IR/i, "");
   if (!/^\d{5,24}$/.test(number)) return undefined;
-  return IRANIAN_BANKS.find((bank) => bank.ibanCode === number.slice(2, 5));
+  return resolveCurrentBank(
+    IRANIAN_BANKS.find((bank) => bank.ibanCode === number.slice(2, 5)),
+  );
 }
 
 export function detectBank(input: {

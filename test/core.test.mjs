@@ -90,6 +90,32 @@ test("detects while typing, returning undefined for invalid or ambiguous prefixe
   }
 });
 
+test("detects both Middle East Bank prefixes, including formatted Persian input", () => {
+  for (const value of ["585947", "505809", "۵۰۵۸-۰۹۰۰-۰۰۰۰-۰۰۰۰"]) {
+    assert.equal(detectBankByCardNumber(value)?.key, "khavarmianeh");
+    assert.equal(detectBank({ cardNumber: value })?.key, "khavarmianeh");
+  }
+});
+
+test("historical identifiers resolve to current service banks without remapping Melal", () => {
+  for (const [card, iban, key] of [
+    ["636214", "062", "melli"],
+    ["627381", "063", "sepah"],
+    ["505801", "073", "sepah"],
+    ["606256", "075", "melal"],
+    ["603799", "017", "melli"],
+    ["589210", "015", "sepah"],
+  ]) {
+    const current = IRANIAN_BANKS.find((bank) => bank.key === key);
+    assert.equal(detectBankByCardNumber(card), current);
+    assert.equal(detectBankByIban("IR00" + iban), current);
+    assert.equal(detectBank({ cardNumber: card }), current);
+    assert.equal(detectBank({ ibanNumber: "00" + iban }), current);
+  }
+  assert.equal(detectBankByCardNumber("۶۳۶۲-۱۴۰۰-۰۰۰۰-۰۰۰۰")?.key, "melli");
+  assert.equal(detectBankByIban("IR۰۰۰۶۳")?.key, "sepah");
+});
+
 test("catalog keys, IBAN codes and card prefixes are unique", () => {
   assert.equal(
     new Set(IRANIAN_BANKS.map((bank) => bank.key)).size,
@@ -113,10 +139,17 @@ test("catalog keys, IBAN codes and card prefixes are unique", () => {
     [],
   );
   for (const bank of IRANIAN_BANKS) {
+    if (bank.successorKey) {
+      const successor = IRANIAN_BANKS.find((item) => item.key === bank.successorKey);
+      assert.ok(successor, bank.key);
+      assert.notEqual(successor.key, bank.key);
+      assert.equal(successor.successorKey, undefined);
+    }
+    const expectedKey = bank.successorKey ?? bank.key;
     if (bank.ibanCode)
-      assert.equal(detectBankByIban("IR00" + bank.ibanCode)?.key, bank.key);
+      assert.equal(detectBankByIban("IR00" + bank.ibanCode)?.key, expectedKey);
     for (const prefix of bank.cardPrefixes) {
-      assert.equal(detectBankByCardNumber(prefix)?.key, bank.key);
+      assert.equal(detectBankByCardNumber(prefix)?.key, expectedKey);
     }
   }
 });
@@ -135,6 +168,15 @@ test("every catalog logo is a PNG matching its original bytes", () => {
     assert.ok(uri.startsWith("data:image/png;base64,"));
     const bytes = Buffer.from(uri.split(",")[1], "base64");
     assert.equal(bytes.subarray(1, 4).toString(), "PNG");
+    if (bank.key !== "pasargad") {
+      assert.equal(bytes.readUInt32BE(16), 512, bank.key);
+      assert.equal(bytes.readUInt32BE(20), 512, bank.key);
+      assert.equal(bytes[25], 6, "Updated logos retain RGBA transparency");
+      assert.match(
+        readFileSync(new URL(`../logos/source/${bank.key}.svg`, import.meta.url), "utf8"),
+        /<svg\b/,
+      );
+    }
     assert.deepEqual(
       bytes,
       readFileSync(new URL(`../logos/${bank.key}.png`, import.meta.url)),
@@ -170,6 +212,12 @@ test("audit covers every record, source and registry entry without overstating v
   );
   for (const bank of IRANIAN_BANKS) {
     const record = audit.records[bank.key];
+    assert.equal(record.succession?.successorKey, bank.successorKey);
+    if (record.succession) {
+      assert.ok(record.succession.sources.length > 0);
+      for (const source of record.succession.sources)
+        assert.match(audit.sources[source].checkedAt, /^\d{4}-\d{2}-\d{2}$/);
+    }
     assert.equal(record.iban.code, bank.ibanCode ?? null);
     assert.deepEqual(
       record.cardPrefixes.map((item) => item.prefix),

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { detectBankByCardNumber } from "../dist/core.js";
+import { IRANIAN_BANKS, detectBankByCardNumber } from "../dist/core.js";
 import { BankIdentity, BankLogo } from "../dist/react.js";
 
 test("React renders bundled logos during SSR without Next.js or browser globals", () => {
@@ -25,6 +25,25 @@ test("visible name avoids duplicate screen-reader text", () => {
   );
   assert.ok(markup.includes('alt=""'));
   assert.ok(markup.includes("<span>بانک ملت</span>"));
+});
+
+test("historical cards and Sheba render the current bank name and logo", () => {
+  for (const [cardNumber, ibanNumber, key] of [
+    ["636214", "IR00062", "melli"],
+    ["627381", "IR00063", "sepah"],
+    ["505801", "IR00073", "sepah"],
+  ]) {
+    const bank = IRANIAN_BANKS.find((item) => item.key === key);
+    const expectedLogo = renderToStaticMarkup(createElement(BankLogo, { bank }));
+    for (const input of [{ cardNumber }, { ibanNumber }]) {
+      const markup = renderToStaticMarkup(createElement(BankIdentity, input));
+      assert.ok(markup.includes(expectedLogo));
+      const named = renderToStaticMarkup(
+        createElement(BankIdentity, { ...input, showName: true }),
+      );
+      assert.ok(named.includes(`<span>${bank.name}</span>`));
+    }
+  }
 });
 
 test("unknown input renders nothing and image props remain customizable", () => {
