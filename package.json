@@ -1,6 +1,6 @@
 {
   "name": "iran-bank-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Iranian bank detection, card and Sheba validation, bank logos and React components with TypeScript support.",
   "license": "MIT",
   "author": {
@@ -79,7 +79,7 @@
     "type": "git",
     "url": "git+https://github.com/amirhosein-rafeie/iran-bank-kit.git"
   },
-  "homepage": "https://github.com/amirhosein-rafeie/iran-bank-kit#readme",
+  "homepage": "https://amirhosein-rafeie.github.io/iran-bank-kit/",
   "bugs": {
     "url": "https://github.com/amirhosein-rafeie/iran-bank-kit/issues"
   }

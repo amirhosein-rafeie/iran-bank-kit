@@ -1,5 +1,7 @@
 # iran-bank-kit
 
+[Live demo](https://amirhosein-rafeie.github.io/iran-bank-kit/) · [npm](https://www.npmjs.com/package/iran-bank-kit)
+
 Iranian bank detection, card and Sheba validation, formatting, masking, SVG logos and React components.
 TypeScript types are included. Core utilities have no runtime dependencies;
 React is only required when importing `iran-bank-kit/react`.
